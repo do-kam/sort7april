@@ -17,21 +17,20 @@ def QuickSort(liste):
     for i in range(1, lenge):
         if myarray2[i] <= myarray2[0]:
             pos += 1 #increment pos of smaller element
-            #liste[pos], liste[i] = liste[i], liste[pos]
-            temp = myarray2[i]
-            myarray2[i] = myarray2[pos]
-            myarray2[pos] = temp
+            myarray2[pos], myarray2[i] = myarray2[i], myarray2[pos]
+            #temp = myarray2[i]
+            #myarray2[i] = myarray2[pos]
+            #myarray2[pos] = temp
 
-    #liste[pos], liste[0] = liste[0], liste[pos]  #move pivot to correct position
+    myarray2[pos], myarray2[0] = myarray2[0], myarray2[pos]  #move pivot to correct position
 
-    temp = myarray2[0]
-    myarray2[0] = myarray2[pos]
-    myarray2[pos] = temp
+    #temp = myarray2[0]
+    #myarray2[0] = myarray2[pos]
+    #myarray2[pos] = temp
     leftside = np.array(QuickSort(myarray2[0:pos]))
     rightside = np.array(QuickSort(myarray2[pos + 1:lenge]))
 
-
-   # arr = np.array(leftside + [liste[pos]] + rightside)  # putting as one together
+    #putting them together
     wertinmitte = myarray2[pos]
     mitte = np.array([wertinmitte])
     arr = np.concatenate((leftside,mitte,rightside))
@@ -112,7 +111,6 @@ myarray= np.array([4.2,2.1,7.5,3.9,1.1,6.8])
 
 print("unsorted ", myarray)
 print("sorted ", QuickSort(myarray))
-#check_my_sort()
 
 print("has not changed original")
 print(myarray)
